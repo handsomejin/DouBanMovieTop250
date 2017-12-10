@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">豆瓣电影Top250</string>
+
+    <string name="summary">概要</string>
+    <string name="share_title">分享链接到</string>
+    <string name="loading">正在加载...</string>
+    <string name="all_loaded">已经到底了哦</string>
+    <string name="cast">影人</string>
+</resources>
