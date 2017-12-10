@@ -26,6 +26,8 @@ public class MovieInfoBean {
 
     private int ratings_count;
 
+    private String mobile_url;
+
     public ImagesBean getImagesBean() {
         return images;
     }
@@ -112,6 +114,14 @@ public class MovieInfoBean {
 
     public void setRatingsCount(int ratings_count) {
         this.ratings_count = ratings_count;
+    }
+
+    public String getMobileUrl() {
+        return mobile_url;
+    }
+
+    public void setMobileUrl(String mobile_url) {
+        this.mobile_url = mobile_url;
     }
 
     public static class ImagesBean {

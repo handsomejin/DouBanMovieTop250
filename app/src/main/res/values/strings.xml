@@ -6,4 +6,7 @@
     <string name="loading">正在加载...</string>
     <string name="all_loaded">已经到底了哦</string>
     <string name="cast">影人</string>
+    <string name="menu_share_title">Share</string>
+    <string name="menu_open_in_browser_title">在浏览器中打开</string>
+
 </resources>

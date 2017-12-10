@@ -2,8 +2,8 @@ package com.example.doubanmovietop250.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -58,7 +58,7 @@ public class MovieInfoActivity extends AppCompatActivity {
 
     private TextView movieRatingsCount;
 
-    private NestedScrollView scrollView;
+    private String mobileUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,11 +102,16 @@ public class MovieInfoActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.share:
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, shareUrl);
-                intent.setType("text/plain");
-                startActivity(Intent.createChooser(intent, getString(R.string.share_title)));
+                Intent intentShare = new Intent();
+                intentShare.setAction(Intent.ACTION_SEND);
+                intentShare.putExtra(Intent.EXTRA_TEXT, shareUrl);
+                intentShare.setType("text/plain");
+                startActivity(Intent.createChooser(intentShare, getString(R.string.share_title)));
+                return true;
+            case R.id.open_in_browser:
+                Intent intentOpenBrowser = new Intent(Intent.ACTION_VIEW);
+                intentOpenBrowser.setData(Uri.parse(mobileUrl));
+                startActivity(intentOpenBrowser);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -130,6 +135,7 @@ public class MovieInfoActivity extends AppCompatActivity {
                     final String title = movieInfoBean.getTitle();
                     final float rating = movieInfoBean.getRating().getAverage();
                     shareUrl = movieInfoBean.getShareUrl();
+                    mobileUrl = movieInfoBean.getMobileUrl();
                     int directorsLength = movieInfoBean.getDirectors().size();
                     for (int i = 0; i < directorsLength; i++) {
                         String staffName = movieInfoBean.getDirectors().get(i).getName();
@@ -180,8 +186,6 @@ public class MovieInfoActivity extends AppCompatActivity {
                                     R.id.scroll_view_child_layout);
                             adapter.notifyDataSetChanged();
                             layout.setVisibility(View.VISIBLE);
-                            scrollView = (NestedScrollView) findViewById(R.id.nested_scrollview_info);
-                            scrollView.scrollTo(0, 0);
                         }
                     });
                 } catch (Exception e) {
