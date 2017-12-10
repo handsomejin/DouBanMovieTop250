@@ -36,21 +36,20 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:id="@+id/scroll_view_child_layout"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:visibility="invisible">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="4dp">
+                app:cardCornerRadius="6dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -85,7 +84,7 @@
                             android:id="@+id/movie_year"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="10dp"
                             android:textSize="16sp" />
 
@@ -93,7 +92,7 @@
                             android:id="@+id/movie_countries"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="3dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginBottom="5dp"
                             android:textSize="16sp" />
@@ -104,7 +103,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_centerVertical="true"
+                        android:layout_alignParentBottom="true"
+                        android:paddingBottom="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp">
 

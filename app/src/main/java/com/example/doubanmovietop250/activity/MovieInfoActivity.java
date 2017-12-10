@@ -177,9 +177,9 @@ public class MovieInfoActivity extends AppCompatActivity {
                                     .into(movieImageView);
                             movieTitle.setText(title);
                             movieContentText.setText(summary);
-                            movieRating.setText(String.valueOf(rating));
+                            movieRating.setText(rating + "分");
                             movieGenres.setText(genres);
-                            movieYear.setText(year);
+                            movieYear.setText(year + "年");
                             movieCountries.setText(countries);
                             movieRatingsCount.setText(String.valueOf(ratingsCount) + "人评分");
                             LinearLayout layout = (LinearLayout) findViewById(
