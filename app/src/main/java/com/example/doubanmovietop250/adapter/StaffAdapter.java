@@ -21,7 +21,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
     private List<StaffItem> staffList;
 
     private Context context;
-;
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout staffLayout;
         ImageView staffImage;
@@ -39,6 +39,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
         this.staffList = staffList;
     }
 
+    // 创建ViewHolder实例
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(context == null) {
@@ -47,6 +48,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.staff_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
+        // 为staffLayout注册点击事件
         holder.staffLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +60,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
         return holder;
     }
 
+    // 对RecyclerView的每个item中的数据进行赋值
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         StaffItem staffItem = staffList.get(position);
@@ -65,6 +68,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
         holder.staffName.setText(staffItem.getName());
     }
 
+    // 返回item的个数
     @Override
     public int getItemCount() {
         return staffList.size();

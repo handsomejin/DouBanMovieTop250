@@ -1,5 +1,6 @@
 package com.example.doubanmovietop250.item;
 
+// 显示影人列表的recyclerview的adapter对应的实体类
 public class StaffItem {
     private String name;
     private String imageUrl;

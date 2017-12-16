@@ -19,6 +19,7 @@ public class ScrollAwareFABBehaviorDefault extends FloatingActionButton.Behavior
                                        final FloatingActionButton child,
                                        final View directTargetChild,
                                        final View target, final int nestedScrollAxes) {
+        // 指定Behavior关注的滑动方向
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
@@ -30,12 +31,15 @@ public class ScrollAwareFABBehaviorDefault extends FloatingActionButton.Behavior
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed,
                 dxUnconsumed, dyUnconsumed);
         if (dyConsumed > 0) {
+            // 向上滚动时，隐藏fab
             animateOut(child);
         } else if (dyConsumed < 0) {
+            // 向下滚动时，显示fab
             animateIn(child);
         }
     }
 
+    // 隐藏fab
     private void animateOut(FloatingActionButton fab) {
         CoordinatorLayout.LayoutParams layoutParams =
                 (CoordinatorLayout.LayoutParams) fab.getLayoutParams();
@@ -44,6 +48,7 @@ public class ScrollAwareFABBehaviorDefault extends FloatingActionButton.Behavior
                 setInterpolator(new LinearInterpolator()).start();
     }
 
+    // 显示fab
     private void animateIn(FloatingActionButton fab) {
         fab.animate().translationY(0).setInterpolator(new LinearInterpolator()).start();
     }

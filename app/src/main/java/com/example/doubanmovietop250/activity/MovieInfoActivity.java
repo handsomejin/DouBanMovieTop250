@@ -66,12 +66,15 @@ public class MovieInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_info);
         Intent intent = getIntent();
         id = intent.getStringExtra("movie_id");
+        // 更改标题栏为Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        // 增加标题栏左侧的返回箭头
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        // 获取相应控件的实例
         movieImageView = (ImageView) findViewById(R.id.movie_image_view);
         movieTitle = (TextView) findViewById(R.id.movie_title);
         movieContentText = (TextView) findViewById(R.id.movie_content_text);
@@ -80,6 +83,7 @@ public class MovieInfoActivity extends AppCompatActivity {
         movieYear = (TextView) findViewById(R.id.movie_year);
         movieCountries = (TextView) findViewById(R.id.movie_countries);
         movieRatingsCount = (TextView) findViewById(R.id.movie_ratings_count);
+        // 设置recyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -89,12 +93,14 @@ public class MovieInfoActivity extends AppCompatActivity {
         requestMovieInfo();
     }
 
+    // 给当前活动创建菜单
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.movie_info_toolbar, menu);
         return true;
     }
 
+    // 设置菜单item的点击事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -117,6 +123,7 @@ public class MovieInfoActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // 执行网络请求并且将数据解析后显示在UI中
     private void requestMovieInfo() {
         new Thread(new Runnable() {
             @Override
@@ -195,6 +202,7 @@ public class MovieInfoActivity extends AppCompatActivity {
         }).start();
     }
 
+    // 用于启动这个Activity
     public static void actionStart(Context context, String id) {
         Intent intent = new Intent(context, MovieInfoActivity.class);
         intent.putExtra("movie_id", id);

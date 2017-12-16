@@ -2,6 +2,7 @@ package com.example.doubanmovietop250.gson;
 
 import java.util.List;
 
+// 电影列表对应的GSON实体类
 public class MovieListBean {
 
     private List<SubjectsBean> subjects;

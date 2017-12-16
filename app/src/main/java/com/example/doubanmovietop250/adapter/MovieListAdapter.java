@@ -3,6 +3,7 @@ package com.example.doubanmovietop250.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.doubanmovietop250.R;
 import com.example.doubanmovietop250.activity.MovieInfoActivity;
 import com.example.doubanmovietop250.item.MovieItem;
-import com.example.doubanmovietop250.R;
 
 import java.util.List;
 
@@ -48,8 +49,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         this.movieItemList = movieItemList;
     }
 
+    // 创建ViewHolder实例
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d("MovieListAdapter", "onCreateViewHolder called");
+        // 如果mContext为空，则把parent的Context赋值给它
         if(mContext == null) {
             mContext = parent.getContext();
         }
@@ -67,8 +71,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         return holder;
     }
 
+    // 对RecyclerView的每个item中的数据进行赋值
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.d("MovieListAdapter", "onBindViewHolder called");
         MovieItem movieItem = movieItemList.get(position);
         holder.movieRank.setText(String.valueOf(movieItem.getRank()));
         Glide.with(mContext).load(movieItem.getImageUrl()).into(holder.movieImage);
@@ -79,8 +85,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
         holder.movieYear.setText(movieItem.getYear());
     }
 
+    // 返回item的个数
     @Override
     public int getItemCount() {
+        Log.d("MovieListAdapter", "getItemCount called");
         return movieItemList.size();
     }
 

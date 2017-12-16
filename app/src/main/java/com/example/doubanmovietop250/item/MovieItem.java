@@ -1,5 +1,6 @@
 package com.example.doubanmovietop250.item;
 
+// 显示电影列表的recyclerview的adapter对应的实体类
 public class MovieItem {
     private int rank;
     private String title;
